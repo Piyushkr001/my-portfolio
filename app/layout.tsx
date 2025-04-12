@@ -29,6 +29,11 @@ const navItems = [
     icon: <User className="h-4 w-4 text-neutral-500 dark:text-white" />,
   },
   {
+    name: "Skill",
+    link: "#skill",
+    icon: <User className="h-4 w-4 text-neutral-500 dark:text-white" />,
+  },
+  {
     name: "Projects",
     link: "#projects",
     icon: <FlipHorizontalIcon className="h-4 w-4 text-neutral-500 dark:text-white" />,
