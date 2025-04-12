@@ -1,10 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useId } from "react";
-
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-
 
 export interface ContainerTextFlipProps {
   /** Array of words to cycle through in the animation */
@@ -20,7 +18,11 @@ export interface ContainerTextFlipProps {
 }
 
 export function ContainerTextFlip({
-  words = ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Gemini", "TypeScript", "React", "Next.js", "NextUI", "Clerk", "Shadcn", "Aceternity UI", "Tailwind CSS", "SQL", "Git", "GitHub" ],
+  words = [
+    "HTML5", "CSS3", "JavaScript", "Bootstrap", "Gemini", "TypeScript",
+    "React", "Next.js", "NextUI", "Clerk", "Shadcn", "Aceternity UI",
+    "Tailwind CSS", "SQL", "Git", "GitHub"
+  ],
   interval = 3000,
   className,
   textClassName,
@@ -29,33 +31,29 @@ export function ContainerTextFlip({
   const id = useId();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [width, setWidth] = useState(100);
-  const textRef = React.useRef(null);
+  const textRef = React.useRef<HTMLDivElement>(null);
 
   const updateWidthForWord = () => {
     if (textRef.current) {
-      // Add some padding to the text width (30px on each side)
-      // @ts-ignore
-      const textWidth = textRef.current.scrollWidth + 30;
+      const textWidth = textRef.current.scrollWidth + 30; // Add some padding
       setWidth(textWidth);
     }
   };
 
   useEffect(() => {
-    // Update width whenever the word changes
     updateWidthForWord();
   }, [currentWordIndex]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-      // Width will be updated in the effect that depends on currentWordIndex
     }, interval);
 
     return () => clearInterval(intervalId);
   }, [words, interval]);
 
   return (
-    <motion.p
+    <motion.div
       layout
       layoutId={`words-here-${id}`}
       animate={{ width }}
@@ -100,6 +98,6 @@ export function ContainerTextFlip({
           ))}
         </motion.div>
       </motion.div>
-    </motion.p>
+    </motion.div>
   );
 }
