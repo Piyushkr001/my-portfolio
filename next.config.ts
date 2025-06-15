@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
         hostname:"i.ytimg.com",
         protocol:"https"
       },
+      {
+        hostname:"www.talentlms.com",
+        protocol:"https"
+      },
     ]
   }
 };

@@ -19,11 +19,11 @@ export function Projects() {
 const project: Projects[] = [
     {
         images: "https://media.graphassets.com/QCGs9ndmR4S8kkQxe6Z4",
-        link: "https://github.com/Piyushkr001/ai-content-generator"
+        link: "https://ai-content-psi.vercel.app/"
     },
     { 
-        images: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3070&q=80", 
-        link: "https://github.com/piyushkr001" 
+        images: "https://www.talentlms.com/blog/wp-content/uploads/2024/05/AI_Learning_29May2024_big-.png", 
+        link: "https://online-learning-platform-ecru.vercel.app/" 
     },
     { 
         images: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80", 
