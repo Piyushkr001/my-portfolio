@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
         hostname:"www.talentlms.com",
         protocol:"https"
       },
+      {
+        hostname:"image.thum.io",
+        protocol:"https"
+      },
     ]
   }
 };

@@ -6,11 +6,10 @@ import {
   MailIcon,
   PhoneIcon,
   MapPin,
-  Linkedin,
-  Github,
   Home,
 } from "lucide-react";
 import Link from "next/link";
+import { GithubLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
 
 export default function Contact() {
   return (
@@ -60,10 +59,10 @@ export default function Contact() {
         {/* Social Links */}
         <div className="flex gap-4 mt-4">
           <Link href="https://www.linkedin.com/in/piyushkr007/" target="_blank">
-            <Linkedin className="hover:text-blue-400 transition-colors size-6" />
+            <LinkedinLogoIcon className="hover:text-blue-400 transition-colors size-6" />
           </Link>
           <Link href="https://github.com/Piyushkr001" target="_blank">
-            <Github className="hover:text-gray-400 transition-colors size-6" />
+            <GithubLogoIcon className="hover:text-gray-400 transition-colors size-6" />
           </Link>
         </div>
       </div>
