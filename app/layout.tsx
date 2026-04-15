@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Ubuntu_Sans } from "next/font/google";
+import { Ubuntu_Sans, Geist } from "next/font/google";
 import "./globals.css";
 import { FlipHorizontalIcon, Home, PhoneIcon, User } from "lucide-react";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/ui/footer";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Ubuntu_Sans({
   subsets: ["latin"],
@@ -51,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className={cn("scroll-smooth", "font-sans", geist.variable)} suppressHydrationWarning>
       <body className= {cn("min-h-screen bg-background font-sans antialiased",inter.className)}>
         <ThemeProvider
           attribute="class"
