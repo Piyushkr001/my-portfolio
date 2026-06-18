@@ -14,29 +14,31 @@ interface Project {
 
 const projects: Project[] = [
   {
-    images:
-      "https://image.thum.io/get/width/1200/crop/800/https://blogging-platform-tau.vercel.app/",
+    images: "/images/gstify-india.png",
+    link: "https://gstify-india.vercel.app/",
+    title: "GSTify India",
+    tag: "Tax Tool",
+  },
+  {
+    images: "/images/blogging-platform.png",
     link: "https://blogging-platform-tau.vercel.app/",
     title: "Blogging Platform",
     tag: "Full Stack",
   },
   {
-    images:
-      "https://image.thum.io/get/width/1200/crop/800/https://excel-analytic.vercel.app/",
+    images: "/images/excel-analytic.png",
     link: "https://excel-analytic.vercel.app/",
     title: "Excel Analytics",
     tag: "Data Viz",
   },
   {
-    images:
-      "https://image.thum.io/get/width/1200/crop/800/https://ai-content-fawn.vercel.app/",
+    images: "/images/ai-content.png",
     link: "https://ai-content-fawn.vercel.app/",
     title: "AI Content Generator",
     tag: "AI / LLM",
   },
   {
-    images:
-      "https://image.thum.io/get/width/1200/crop/800/https://uiuxmock.vercel.app/",
+    images: "/images/uiuxmock.png",
     link: "https://uiuxmock.vercel.app/",
     title: "UI/UX Mock Tool",
     tag: "Design Tool",
