@@ -2,11 +2,11 @@ import React from 'react'
 import { TextGenerateEffect } from '../ui/text-generate-effect';
 import { cn } from '@/lib/utils';
 
-const words = `Hey there! I’m Piyush Kumar, a frontend developer passionate about crafting sleek, responsive, and user-focused web experiences. With a strong foundation in TypeScript, React, Next.js, and Tailwind CSS, I thrive on turning complex ideas into intuitive interfaces.
+const words = `Hey there! I’m Piyush Kumar, a Full Stack Developer passionate about building scalable, responsive, and user-focused web applications. With hands-on experience in React.js, Next.js, TypeScript, Node.js, REST APIs, PostgreSQL, MongoDB, Tailwind CSS, and modern UI libraries like Shadcn UI and NextUI, I enjoy turning complex ideas into clean, practical, and high-performing digital solutions.
 
-I’ve had hands-on experience building real-world applications—from a weather forecasting tool powered by live APIs, to a scalable AI content generation platform integrating cutting-edge NLP models. During my time at CareMedico and Internshala, I collaborated on diverse projects where I honed my skills in modern UI libraries like Shadcn and NextUI, while ensuring performance, accessibility, and maintainability.
+I’ve worked on real-world applications including job listing platforms, certificate verification systems, Excel analytics dashboards, AI-powered content generation tools, blogging platforms, and government training management websites. Through my experience at National Intstitute of Educational Planning and Administration(NIEPA), Amdox Technologies, Zidio Development, CareMedico, and Internshala, I have built responsive interfaces, integrated APIs, implemented authentication workflows, optimized performance, and contributed to deployment-ready web applications.
 
-When I'm not coding, you’ll probably find me playing badminton, diving into cybersecurity topics, or cycling my way through new ideas. I'm always up for a challenge that pushes my limits and allows me to learn something new.
+Beyond coding, I enjoy exploring cybersecurity, improving my problem-solving skills, and staying updated with modern web technologies. I’m always excited to take on challenges that help me learn, grow, and build meaningful products.
 
 Let’s build something awesome together!`;
 
