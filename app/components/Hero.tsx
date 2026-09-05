@@ -33,7 +33,7 @@ export function Hero() {
       <p
         className={`text-base md:text-lg mt-4 font-normal inter-var text-center transition-colors duration-500 ${subtextColor}`}
       >
-       Full Stack Web Developer with hands-on experience in React.js, Next.js, TypeScript, REST APIs, and responsive web application development.
+        Full Stack Developer passionate about building scalable, responsive, and user-focused web applications. With hands-on experience in React.js, Next.js, TypeScript, Node.js, REST APIs, PostgreSQL, MongoDB, Tailwind CSS, and modern UI libraries like Shadcn UI and NextUI, I enjoy turning complex ideas into clean, practical, and high-performing digital solutions.
       </p>
       <div className="flex justify-center mt-8">
         <Button
