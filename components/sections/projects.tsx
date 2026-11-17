@@ -51,11 +51,10 @@ const projects: Project[] = [
     tag: "EdTech",
   },
   {
-    images:
-      "https://play-lh.googleusercontent.com/HOnQyPxVCPr7W50rXUp6bu1-UZo2bM_GuQ9coNItncFrP117qbkadZpc60qVmJ5-kw=w526-h296-rw",
-    link: "https://github.com/Piyushkr001/Weather_Forcasting_App",
-    title: "Weather Forecast App",
-    tag: "Mobile",
+    images: "/images/notegraph_ai.png",
+    link: "https://notegraph-ai.vercel.app/",
+    title: "NoteGraph AI",
+    tag: "AI",
   },
   {
     images: "https://i.ytimg.com/vi/dS95PJntXxQ/maxresdefault.jpg",
