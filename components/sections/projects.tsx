@@ -57,10 +57,10 @@ const projects: Project[] = [
     tag: "AI",
   },
   {
-    images: "https://i.ytimg.com/vi/dS95PJntXxQ/maxresdefault.jpg",
-    link: "https://github.com/Piyushkr001/zero2hero",
-    title: "Zero2Hero",
-    tag: "Open Source",
+    images: "/images/writersview.png",
+    link: "https://writersview-php-production-y4w0e7.laravel.cloud/",
+    title: "Writer's View",
+    tag: "Blogging",
   },
 ];
 
