@@ -6,7 +6,7 @@ import { MotionConfig, motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, CheckCircle2, Download, Mail } from "lucide-react";
 import { GithubLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
 
-import { HeroExpertisePanel } from "@/components/sections/hero-expertise-panel";
+import { HeroPortrait } from "@/components/hero/hero-portrait";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ContainerTextFlip } from "@/components/ui/container-text-flip";
@@ -265,14 +265,14 @@ export function Hero() {
               </motion.div>
             </div>
 
-            {/* 7. Right Column: Developer Expertise Visual Panel */}
+            {/* 7. Right Column: Interactive 3D Portrait */}
             <motion.div
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={shouldReduceMotion ? false : { y: 12 }}
+              animate={{ y: 0 }}
               transition={transition(0.22)}
-              className="lg:col-span-5"
+              className="flex justify-center lg:col-span-5 lg:justify-end"
             >
-              <HeroExpertisePanel />
+              <HeroPortrait />
             </motion.div>
           </div>
         </div>
