@@ -15,6 +15,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ContainerTextFlip } from "@/components/ui/container-text-flip";
+import { GlareCard } from "@/components/ui/glare-card";
 import { Separator } from "@/components/ui/separator";
 import { highlightedSkills, skillCategories } from "@/data/skills";
 import type { SkillCategoryId } from "@/types/skills";
@@ -97,52 +98,54 @@ export default function SkillSection() {
                     ease: "easeOut",
                   }}
                 >
-                  <Card className="h-full rounded-2xl border border-border/80 bg-card/95 ring-0 [--card-spacing:--spacing(5)] shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-md dark:bg-card/85">
-                    <CardHeader className="flex flex-row items-center justify-between gap-3 space-y-0 pb-0">
-                      <div className="flex items-center gap-3 min-w-0">
-                        <div
-                          aria-hidden="true"
-                          className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-border/80 bg-muted/70 text-primary"
-                        >
-                          <Icon className="size-4" />
+                  <GlareCard containerClassName="h-full">
+                    <Card className="h-full rounded-none border-0 bg-transparent ring-0 [--card-spacing:--spacing(5)] shadow-none">
+                      <CardHeader className="flex flex-row items-center justify-between gap-3 space-y-0 pb-0">
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div
+                            aria-hidden="true"
+                            className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-border/80 bg-muted/70 text-primary"
+                          >
+                            <Icon className="size-4" />
+                          </div>
+                          <CardTitle>
+                            <h3 className="text-base sm:text-lg font-semibold tracking-tight text-card-foreground">
+                              {category.title}
+                            </h3>
+                          </CardTitle>
                         </div>
-                        <CardTitle>
-                          <h3 className="text-base sm:text-lg font-semibold tracking-tight text-card-foreground">
-                            {category.title}
-                          </h3>
-                        </CardTitle>
+
+                        <Badge
+                          variant="secondary"
+                          className="shrink-0 border border-border/60 bg-secondary/80 text-xs font-medium text-secondary-foreground"
+                        >
+                          {category.items.length}
+                        </Badge>
+                      </CardHeader>
+
+                      <div className="px-(--card-spacing)">
+                        <Separator className="bg-border/70" />
                       </div>
 
-                      <Badge
-                        variant="secondary"
-                        className="shrink-0 border border-border/60 bg-secondary/80 text-xs font-medium text-secondary-foreground"
-                      >
-                        {category.items.length}
-                      </Badge>
-                    </CardHeader>
-
-                    <div className="px-(--card-spacing)">
-                      <Separator className="bg-border/70" />
-                    </div>
-
-                    <CardContent>
-                      <ul
-                        aria-label={`${category.title} skills`}
-                        className="flex flex-wrap gap-1.5"
-                      >
-                        {category.items.map((skill) => (
-                          <li key={skill}>
-                            <Badge
-                              variant="outline"
-                              className="border-border/80 bg-muted/40 font-normal text-foreground/85 transition-colors hover:bg-muted/70"
-                            >
-                              {skill}
-                            </Badge>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+                      <CardContent>
+                        <ul
+                          aria-label={`${category.title} skills`}
+                          className="flex flex-wrap gap-1.5"
+                        >
+                          {category.items.map((skill) => (
+                            <li key={skill}>
+                              <Badge
+                                variant="outline"
+                                className="border-border/80 bg-muted/40 font-normal text-foreground/85 transition-colors hover:bg-muted/70"
+                              >
+                                {skill}
+                              </Badge>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </GlareCard>
                 </motion.div>
               );
             })}
