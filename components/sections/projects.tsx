@@ -86,7 +86,7 @@ export function Projects() {
     >
       {/* Subtle background glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[400px] w-[700px] rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-100 w-175 rounded-full bg-primary/5 blur-3xl" />
       </div>
 
       {/* Header */}
@@ -98,7 +98,7 @@ export function Projects() {
           Featured{" "}
           <span className="relative inline-block">
             Projects
-            <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-primary/40" />
+            <span className="absolute -bottom-1 left-0 h-0.75 w-full rounded-full bg-primary/40" />
           </span>
         </h2>
         <p className="max-w-xl text-muted-foreground text-sm md:text-base leading-relaxed">

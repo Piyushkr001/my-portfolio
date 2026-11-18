@@ -12,7 +12,7 @@ export default function Contact() {
   return (
     <section
       id="contacts"
-      className="relative flex h-[40rem] w-full flex-col items-center justify-center gap-5 overflow-hidden rounded-md bg-black px-4"
+      className="relative flex h-160 w-full flex-col items-center justify-center gap-5 overflow-hidden rounded-md bg-black px-4"
     >
       <div className="absolute inset-0 h-full w-full">
         <SparklesCore

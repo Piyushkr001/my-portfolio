@@ -15,19 +15,19 @@ export default function About() {
         <section id="about" className="flex flex-col justify-center items-center gap-10 mt-5 px-5 md:px-40">
             <h2 className="text-4xl font-bold text-center">About Me</h2>
 
-            <div className="relative flex h-auto min-h-[30rem] w-full items-center justify-center bg-white dark:bg-black rounded-2xl p-6 md:p-12 shadow-lg">
+            <div className="relative flex h-auto min-h-120 w-full items-center justify-center bg-white dark:bg-black rounded-2xl p-6 md:p-12 shadow-lg">
                 {/* Grid pattern */}
                 <div
                     className={cn(
                         "absolute inset-0 rounded-2xl z-0",
-                        "[background-size:20px_20px]",
-                        "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
-                        "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
+                        "bg-size-[20px_20px]",
+                        "bg-[radial-gradient(#d4d4d4_1px,transparent_1px)]",
+                        "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]"
                     )}
                 />
 
                 {/* Faded radial effect */}
-                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black z-10"></div>
+                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-white mask-[radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black z-10"></div>
 
                 {/* Text Content */}
                 <div className="relative z-20 max-w-3xl text-center px-4">
