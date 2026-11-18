@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
+    // Allow DNS64/NAT64 (64:ff9b::/96) upstream resolutions for the explicit remotePatterns allowlist.
+    dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
         hostname: "images.unsplash.com",
