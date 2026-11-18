@@ -26,9 +26,9 @@ export default function Contact() {
         />
       </div>
 
-      <h1 className="relative z-20 text-center text-3xl font-bold text-white md:text-7xl lg:text-6xl">
+      <h2 className="relative z-20 text-center text-3xl font-bold text-white md:text-7xl lg:text-6xl">
         Interested in Working Together?
-      </h1>
+      </h2>
 
       <div className="z-20 flex flex-col items-center gap-5 text-center text-lg text-white">
         {/* Email */}

@@ -8,7 +8,6 @@ const eslintConfig = defineConfig([
   // Preserve pre-existing components untouched while keeping strict errors on all new/modified code
   {
     files: [
-      "app/components/Hero.tsx",
       "components/ui/sparkles.tsx",
       "components/ui/text-generate-effect.tsx",
       "components/ui/wavy-background.tsx",
