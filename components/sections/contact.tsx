@@ -3,7 +3,10 @@ import React from "react";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactInfo } from "@/components/contact/contact-info";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { getContactEmailConfig } from "@/lib/email/contact";
+import {
+  DEFAULT_CONTACT_TO_EMAIL,
+  getContactEmailConfig,
+} from "@/lib/email/contact";
 
 export default function Contact() {
   const emailConfig = getContactEmailConfig();
@@ -36,7 +39,7 @@ export default function Contact() {
             <ContactForm
               emailConfigured={emailConfig.configured}
               missingEnv={devMissingEnv}
-              recipientEmail={emailConfig.toEmail}
+              recipientEmail={DEFAULT_CONTACT_TO_EMAIL}
             />
           </div>
         </div>

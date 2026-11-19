@@ -106,11 +106,22 @@ export async function sendContactEmail(
     });
 
     if (error || !data?.id) {
+      if (process.env.NODE_ENV !== "production" && error) {
+        console.error(
+          `[contact] Email delivery failed (${error.name}): ${error.message}`
+        );
+      }
       return { ok: false, code: "DELIVERY_FAILED" };
     }
 
     return { ok: true, messageId: data.id };
-  } catch {
+  } catch (err) {
+    if (process.env.NODE_ENV !== "production") {
+      console.error(
+        "[contact] Unexpected email delivery error:",
+        err instanceof Error ? err.message : "Unknown error"
+      );
+    }
     return { ok: false, code: "DELIVERY_FAILED" };
   }
 }
