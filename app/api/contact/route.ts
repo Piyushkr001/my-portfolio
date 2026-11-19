@@ -25,22 +25,46 @@ function isAllowedOrigin(request: Request): boolean {
     return true;
   }
 
-  const host =
+  const rawHost =
     request.headers.get("x-forwarded-host") || request.headers.get("host");
+  const host = rawHost?.split(",")[0]?.trim().toLowerCase();
   if (!host) {
     return false;
   }
 
   try {
-    const originHost = new URL(origin).host;
-    return originHost === host;
+    const originUrl = new URL(origin);
+    const originHost = originUrl.host.toLowerCase();
+    if (originHost === host) {
+      return true;
+    }
+
+    if (process.env.NODE_ENV !== "production") {
+      const localHosts = new Set(["localhost", "127.0.0.1", "[::1]"]);
+      const hostNameOnly = host.replace(/:\d+$/, "");
+      if (
+        localHosts.has(originUrl.hostname.toLowerCase()) &&
+        localHosts.has(hostNameOnly)
+      ) {
+        return true;
+      }
+    }
+
+    return false;
   } catch {
     return false;
   }
 }
 
 export async function POST(request: Request) {
+  const logDevReject = (code: string) => {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(`[contact] Request rejected: ${code}`);
+    }
+  };
+
   if (!isAllowedOrigin(request)) {
+    logDevReject("FORBIDDEN_ORIGIN");
     return jsonResponse(
       {
         ok: false,
@@ -53,6 +77,7 @@ export async function POST(request: Request) {
 
   const contentType = request.headers.get("content-type") ?? "";
   if (!contentType.toLowerCase().includes("application/json")) {
+    logDevReject("UNSUPPORTED_MEDIA_TYPE");
     return jsonResponse(
       {
         ok: false,
@@ -70,6 +95,7 @@ export async function POST(request: Request) {
       Number.isFinite(declaredLength) &&
       declaredLength > CONTACT_LIMITS.maxPayloadBytes
     ) {
+      logDevReject("PAYLOAD_TOO_LARGE");
       return jsonResponse(
         {
           ok: false,
@@ -85,6 +111,7 @@ export async function POST(request: Request) {
   try {
     rawBody = await request.text();
   } catch {
+    logDevReject("INVALID_JSON");
     return jsonResponse(
       {
         ok: false,
@@ -96,6 +123,7 @@ export async function POST(request: Request) {
   }
 
   if (Buffer.byteLength(rawBody, "utf8") > CONTACT_LIMITS.maxPayloadBytes) {
+    logDevReject("PAYLOAD_TOO_LARGE");
     return jsonResponse(
       {
         ok: false,
@@ -110,6 +138,7 @@ export async function POST(request: Request) {
   try {
     parsedJson = JSON.parse(rawBody);
   } catch {
+    logDevReject("INVALID_JSON");
     return jsonResponse(
       {
         ok: false,
@@ -122,6 +151,7 @@ export async function POST(request: Request) {
 
   const validation = contactSubmissionSchema.safeParse(parsedJson);
   if (!validation.success) {
+    logDevReject("VALIDATION_ERROR");
     return jsonResponse(
       {
         ok: false,
@@ -134,7 +164,11 @@ export async function POST(request: Request) {
   }
 
   // Honeypot check: reject automated bot submissions without claiming delivery.
-  if (validation.data.website.trim().length > 0) {
+  if (
+    validation.data.hpField.trim().length > 0 ||
+    validation.data.website.trim().length > 0
+  ) {
+    logDevReject("SPAM_DETECTED");
     return jsonResponse(
       {
         ok: false,

@@ -63,6 +63,7 @@ export const contactFormSchema = z.object({
 });
 
 export const contactSubmissionSchema = contactFormSchema.extend({
+  hpField: z.string().max(CONTACT_LIMITS.honeypotMax).optional().default(""),
   website: z.string().max(CONTACT_LIMITS.honeypotMax).optional().default(""),
 });
 

@@ -91,12 +91,13 @@ export function ContactForm({
     Partial<Record<ContactFieldName, boolean>>
   >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [providerUnavailable, setProviderUnavailable] =
-    useState(!emailConfigured);
+  const [runtimeUnavailable, setRuntimeUnavailable] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{
     type: "success" | "error";
     text: string;
   } | null>(null);
+
+  const providerUnavailable = !emailConfigured || runtimeUnavailable;
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -183,7 +184,7 @@ export function ContactForm({
         },
         body: JSON.stringify({
           ...validation.data,
-          website: honeypot,
+          hpField: honeypot,
         }),
       });
 
@@ -199,7 +200,7 @@ export function ContactForm({
         setHoneypot("");
         setErrors({});
         setTouched({});
-        setProviderUnavailable(false);
+        setRuntimeUnavailable(false);
         setStatusMessage({
           type: "success",
           text: "Your message was sent successfully.",
@@ -214,7 +215,7 @@ export function ContactForm({
           focusFirstError(payload.fieldErrors);
         }
         if (payload.code === "EMAIL_NOT_CONFIGURED") {
-          setProviderUnavailable(true);
+          setRuntimeUnavailable(true);
         }
       }
 
@@ -247,7 +248,7 @@ export function ContactForm({
         <Card className="relative overflow-hidden rounded-2xl border border-border/80 bg-card/95 ring-0 shadow-sm backdrop-blur-md [--card-spacing:--spacing(5)] sm:[--card-spacing:--spacing(6)] dark:bg-card/85">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent"
+            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary/35 to-transparent"
           />
 
           <CardHeader className="gap-1.5">
@@ -315,19 +316,21 @@ export function ContactForm({
               noValidate
               className="space-y-5"
             >
-              {/* Accessible honeypot field hidden from human visitors */}
+              {/* Accessible honeypot field hidden from human visitors and browser autofill */}
               <div
                 aria-hidden="true"
                 className="sr-only"
                 style={{ position: "absolute", left: "-9999px" }}
               >
-                <label htmlFor="contact-website">Website</label>
+                <label htmlFor="contact-hp-field">Leave this field empty</label>
                 <input
-                  id="contact-website"
-                  name="website"
+                  id="contact-hp-field"
+                  name="hpField"
                   type="text"
                   tabIndex={-1}
-                  autoComplete="off"
+                  autoComplete="new-password"
+                  data-1p-ignore="true"
+                  data-lpignore="true"
                   value={honeypot}
                   onChange={(e) => setHoneypot(e.target.value)}
                 />
