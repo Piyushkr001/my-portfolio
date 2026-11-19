@@ -6,6 +6,7 @@ import { FloatingNav } from "@/components/ui/floating-navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/ui/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -69,6 +70,7 @@ export default function RootLayout({
           <FloatingNav navItems={navItems} />
           {children}
           <Footer/>
+          <Toaster position="bottom-right" richColors closeButton />
         </ThemeProvider>
       </body>
     </html>

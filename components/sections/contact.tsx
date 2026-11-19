@@ -1,93 +1,44 @@
-"use client";
-
 import React from "react";
-import { SparklesCore } from "../ui/sparkles";
-import { Button, buttonVariants } from "../ui/button";
-import { cn } from "@/lib/utils";
-import { MailIcon, PhoneIcon, MapPin, Home } from "lucide-react";
-import Link from "next/link";
-import { GithubLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
+
+import { ContactForm } from "@/components/contact/contact-form";
+import { ContactInfo } from "@/components/contact/contact-info";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { getContactEmailConfig } from "@/lib/email/contact";
 
 export default function Contact() {
+  const emailConfig = getContactEmailConfig();
+  const devMissingEnv =
+    process.env.NODE_ENV !== "production" ? emailConfig.missingEnv : undefined;
+
   return (
     <section
       id="contacts"
-      className="relative flex h-160 w-full flex-col items-center justify-center gap-5 overflow-hidden rounded-md bg-black px-4"
+      aria-labelledby="contact-heading"
+      className="relative w-full overflow-hidden border-t border-border/60 bg-background py-20 md:py-28 scroll-mt-24"
     >
-      <div className="absolute inset-0 h-full w-full">
-        <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
-          className="h-full w-full"
-          particleColor="#FFFFFF"
-        />
+      {/* Subtle ambient glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-96 w-full max-w-4xl rounded-full bg-primary/5 blur-3xl" />
       </div>
 
-      <h2 className="relative z-20 text-center text-3xl font-bold text-white md:text-7xl lg:text-6xl">
-        Interested in Working Together?
-      </h2>
+      {/* Subtle Aceternity Background Beams */}
+      <BackgroundBeams className="text-muted-foreground/60 opacity-35 dark:opacity-65" />
 
-      <div className="z-20 flex flex-col items-center gap-5 text-center text-lg text-white">
-        {/* Email */}
-        <Button
-          size="lg"
-          className="cursor-pointer"
-          nativeButton={false}
-          render={(props) => (
-            <a
-              {...props}
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=krvpiyush@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Piyush,"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Send Me an Email <MailIcon className="ml-2 size-5" />
-            </a>
-          )}
-        />
-
-        {/* Phone Number */}
-        <div className="flex items-center gap-2">
-          <PhoneIcon className="size-5" />
-          <span>+91 63980 72914</span>
-        </div>
-
-        {/* Location */}
-        <div className="flex items-center gap-2">
-          <MapPin className="size-5" />
-          <span>Moradabad, Uttar Pradesh, India</span>
-        </div>
-
-        {/* Address Line */}
-        <div className="flex max-w-3xl items-center gap-2 text-center">
-          <Home className="size-5 shrink-0" />
-          <span>
-            D14 RailVihar Colony, Manoharpur Road, Near Krypton Public School,
-            Moradabad - 244001
-          </span>
-        </div>
-
-        {/* Social Links */}
-        <div className="mt-4 flex gap-4">
-          <Link
-            href="https://www.linkedin.com/in/piyushkr007/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn Profile"
-          >
-            <LinkedinLogoIcon className="size-6 transition-colors hover:text-blue-400" />
-          </Link>
-
-          <Link
-            href="https://github.com/Piyushkr001"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub Profile"
-          >
-            <GithubLogoIcon className="size-6 transition-colors hover:text-gray-400" />
-          </Link>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-16">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+          <div className="lg:col-span-5">
+            <ContactInfo />
+          </div>
+          <div className="lg:col-span-7">
+            <ContactForm
+              emailConfigured={emailConfig.configured}
+              missingEnv={devMissingEnv}
+              recipientEmail={emailConfig.toEmail}
+            />
+          </div>
         </div>
       </div>
     </section>
